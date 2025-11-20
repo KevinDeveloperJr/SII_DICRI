@@ -1,0 +1,529 @@
+/* ========= Tema oscuro / claro ========= */
+:root {
+  --bg-page: #020617;
+  --bg-card: #020617;
+  --bg-card-elevated: #02081f;
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-soft: rgba(148, 163, 184, 0.3);
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --danger: #dc2626;
+  --success: #16a34a;
+}
+
+/* Tema claro */
+:root[data-theme='light'] {
+  --bg-page: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-card-elevated: #ffffff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border-soft: rgba(148, 163, 184, 0.3);
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --danger: #dc2626;
+  --success: #16a34a;
+}
+
+/* ========= Reset básico ========= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+}
+
+/* Quitamos el max-width / padding del template de Vite */
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========= Layout general ========= */
+
+.page {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 24px 32px;
+}
+
+.page-header {
+  margin-bottom: 16px;
+}
+
+/* ========= Navbar ========= */
+
+.navbar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border-soft);
+  background: linear-gradient(135deg, #020617, #02081f);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========= Botones ========= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: rgba(37, 99, 235, 0.65);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border-color: var(--border-soft);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: rgba(148, 163, 184, 0.12);
+}
+
+.btn-success {
+  background-color: var(--success);
+  color: #ffffff;
+  border-color: rgba(22, 163, 74, 0.65);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: #ffffff;
+  border-color: rgba(220, 38, 38, 0.7);
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn:disabled,
+.btn.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Botón tema */
+.btn-theme-toggle {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+/* Botones de acción en tabla */
+.btn-accion {
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-accion-editar {
+  background-color: rgba(37, 99, 235, 0.12);
+  color: #bfdbfe;
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+.btn-accion-eliminar {
+  background-color: rgba(220, 38, 38, 0.12);
+  color: #fecaca;
+  border-color: rgba(220, 38, 38, 0.35);
+}
+
+.btn-accion.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ========= Tarjetas / cards ========= */
+
+.card {
+  background-color: var(--bg-card-elevated);
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  padding: 16px 18px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+/* Grid en detalle de expediente */
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ========= Formularios ========= */
+
+.form-group {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.input,
+textarea.input,
+select.input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+  padding: 8px 10px;
+  font-size: 14px;
+  background-color: #020617;
+  color: var(--text-main);
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+:root[data-theme='light'] .input,
+:root[data-theme='light'] textarea.input,
+:root[data-theme='light'] select.input {
+  background-color: #ffffff;
+}
+
+.input:focus,
+textarea.input:focus,
+select.input:focus {
+  border-color: rgba(37, 99, 235, 0.8);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.5);
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* Mensajes de error */
+.text-error {
+  color: #fca5a5;
+  font-size: 13px;
+}
+
+/* ========= Tablas ========= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table thead {
+  background-color: rgba(15, 23, 42, 0.95);
+}
+
+:root[data-theme='light'] .table thead {
+  background-color: #e5e7eb;
+}
+
+.table th,
+.table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  text-align: left;
+}
+
+.table th {
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: rgba(15, 23, 42, 0.6);
+}
+
+:root[data-theme='light'] .table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(37, 99, 235, 0.15);
+}
+
+/* Filas clickeables */
+.clickable {
+  cursor: pointer;
+}
+
+.acciones-cell {
+  display: flex;
+  gap: 6px;
+}
+
+/* ========= Pills de estado ========= */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.pill-success {
+  background-color: rgba(22, 163, 74, 0.12);
+  color: #bbf7d0;
+  border: 1px solid rgba(22, 163, 74, 0.5);
+}
+
+.pill-danger {
+  background-color: rgba(220, 38, 38, 0.12);
+  color: #fecaca;
+  border: 1px solid rgba(220, 38, 38, 0.5);
+}
+
+.pill-warning {
+  background-color: rgba(234, 179, 8, 0.12);
+  color: #fef9c3;
+  border: 1px solid rgba(234, 179, 8, 0.5);
+}
+
+.pill-gray {
+  background-color: rgba(148, 163, 184, 0.18);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+/* ========= Login ========= */
+
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  position: relative;
+  padding: 16px;
+}
+
+.login-card {
+  max-width: 380px;
+  width: 100%;
+}
+
+.login-header {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.login-title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.login-subtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Campo contraseña con icono ojo */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input {
+  padding-right: 40px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ========= Modales ========= */
+
+/* Modal tipo "backdrop + card" (indicios / usuarios) */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.modal-card {
+  background-color: var(--bg-card-elevated);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 18px 20px 16px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75);
+}
+
+/* Modal tipo overlay (nuevo expediente creado) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.modal-content {
+  background-color: var(--bg-card-elevated);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 22px 22px 18px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75);
+}
+
+.modal-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.modal-text {
+  margin: 0 0 16px;
+  font-size: 14px;
+}
+
+.modal-exp {
+  font-size: 20px;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ========= Utilidades ========= */
+
+.btn-reset-filtros {
+  font-size: 13px;
+}
+
+.text-center {
+  text-align: center;
+}
