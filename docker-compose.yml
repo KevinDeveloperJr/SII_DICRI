@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./sii_dicri_backend
+      dockerfile: Dockerfile
+    container_name: sii_dicri_backend
+    ports:
+      - "3001:3001"
+    environment:
+      DB_SERVER: host.docker.internal    
+      DB_PORT: 1433
+      DB_USER: sa                       
+      DB_PASSWORD: Junior25              
+      DB_DATABASE: SII_DICRI             
+      DB_ENCRYPT: "false"               
+      JWT_SECRET: SII_DICRI
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./sii_dicri_frontend
+      dockerfile: Dockerfile
+    container_name: sii_dicri_frontend
+    ports:
+      - "8080:80"        
+    depends_on:
+      - backend
+    restart: unless-stopped
